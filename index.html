@@ -6,6 +6,9 @@
     <title>AkSoft Stok Yönetim Sistemi</title>
     <meta name="description" content="Küçük ve orta ölçekli işletmeler için geliştirilmiş, kullanımı kolay, hızlı ve güçlü stok & satış yönetim programı.">
     
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="shortcut icon" href="logo.png" type="image/png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -28,94 +31,225 @@
         ul { list-style: none; }
 
         /* Navbar */
-        nav { background: var(--primary); color: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .logo { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { color: white; font-weight: 600; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
+        nav { 
+            background: var(--primary); 
+            color: white; 
+            padding: 1rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .logo img {
+            height: 35px;
+            width: auto;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+        
+        .nav-links { 
+            display: flex; 
+            gap: 20px; 
+            align-items: center;
+        }
+        
+        .nav-links a { 
+            color: white; 
+            font-weight: 600; 
+            transition: color 0.3s; 
+        }
+        
+        .nav-links a:hover { 
+            color: var(--accent); 
+        }
+
+        /* Hamburger Menü İkonu */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
         
         /* Hero Section */
-        .hero { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; text-align: center; padding: 6rem 5% 4rem; }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .badges { margin-bottom: 2rem; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-        .badge { background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; backdrop-filter: blur(5px); }
+        .hero { 
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            color: white; 
+            text-align: center; 
+            padding: 5rem 5% 4rem; 
+        }
+        
+        .hero h1 { 
+            font-size: 2.8rem; 
+            margin-bottom: 1rem; 
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .hero p { 
+            font-size: 1.1rem; 
+            margin-bottom: 2rem; 
+            opacity: 0.9; 
+            max-width: 650px; 
+            margin-left: auto; 
+            margin-right: auto; 
+        }
+        
+        .badges { 
+            margin-bottom: 2rem; 
+            display: flex; 
+            justify-content: center; 
+            gap: 8px; 
+            flex-wrap: wrap; 
+        }
+        
+        .badge { 
+            background: rgba(255,255,255,0.15); 
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            backdrop-filter: blur(5px); 
+        }
         
         /* Butonlar */
-        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 8px; font-weight: 600; transition: all 0.3s; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-group {
+            display: flex; 
+            gap: 15px; 
+            justify-content: center; 
+            flex-wrap: wrap;
+        }
+
+        .btn { 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 8px; 
+            padding: 12px 28px; 
+            border-radius: 8px; 
+            font-weight: 600; 
+            transition: all 0.3s; 
+            cursor: pointer; 
+            border: none; 
+            font-size: 1rem; 
+            width: auto;
+        }
+        
         .btn-primary { background: var(--accent); color: white; }
         .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
         .btn-whatsapp { background: #25D366; color: white; }
         .btn-whatsapp:hover { background: #1ebe57; transform: translateY(-2px); }
 
         /* Seksiyonlar */
-        section { padding: 5rem 5%; max-width: 1200px; margin: auto; }
-        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 3rem; color: var(--primary); }
+        section { padding: 4rem 5%; max-width: 1200px; margin: auto; }
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 2.5rem; color: var(--primary); }
 
         /* Grid Sistemleri */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 
         /* Kartlar */
-        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; border: 1px solid var(--border); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        .card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
-        .card h3 { font-size: 1.3rem; margin-bottom: 15px; color: var(--primary); }
-        .card ul { margin-top: 15px; }
-        .card ul li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; border: 1px solid var(--border); }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .card i { font-size: 2.2rem; color: var(--accent); margin-bottom: 15px; }
+        .card h3 { font-size: 1.25rem; margin-bottom: 12px; color: var(--primary); }
+        .card ul { margin-top: 12px; }
+        .card ul li { margin-bottom: 8px; padding-left: 22px; position: relative; font-size: 0.95rem; }
         .card ul li::before { content: '\f00c'; font-family: 'FontAwesome'; position: absolute; left: 0; color: var(--accent); }
 
         /* Tablolar */
-        .table-responsive { overflow-x: auto; margin-top: 20px; }
-        table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); }
-        th { background: var(--primary); color: white; font-weight: 600; }
+        .table-responsive { 
+            overflow-x: auto; 
+            margin-top: 20px; 
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        table { width: 100%; border-collapse: collapse; background: white; min-width: 500px; }
+        th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+        th { background: var(--primary); color: white; font-weight: 600; white-space: nowrap; }
         tr:hover { background-color: var(--light); }
 
         /* Kod Blokları */
-        .code-block { background: var(--dark); color: #00ff00; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; }
+        .code-block { background: var(--dark); color: #00ff00; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; font-size: 0.95rem; overflow-x: auto; }
 
         /* SSS Akordiyon */
-        .faq-item { background: white; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--border); overflow: hidden; }
-        .faq-question { padding: 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: white; }
+        .faq-item { background: white; margin-bottom: 12px; border-radius: 8px; border: 1px solid var(--border); overflow: hidden; }
+        .faq-question { padding: 18px 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: white; font-size: 1rem; user-select: none; }
         .faq-question:hover { color: var(--accent); }
-        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; }
-        .faq-item.active .faq-answer { padding: 0 20px 20px; max-height: 300px; }
-        .faq-item.active .faq-question i { transform: rotate(180deg); transition: 0.3s; }
+        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; font-size: 0.95rem; color: #555; }
+        .faq-item.active .faq-answer { padding: 0 20px 18px; max-height: 300px; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); transition: 0.3s; color: var(--accent); }
 
         /* Footer */
         footer { background: var(--dark); color: white; text-align: center; padding: 3rem 5%; margin-top: 3rem; }
-        footer p { opacity: 0.7; margin-bottom: 10px; }
+        footer p { opacity: 0.7; margin-bottom: 10px; font-size: 0.95rem; }
 
-        /* Mobil Uyum */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.2rem; }
+        /* --- MOBİL TAM UYUMLULUK AYARLARI (RESPONSIVE) --- */
+        @media (max-width: 991px) {
+            .hero h1 { font-size: 2.3rem; }
             section { padding: 3rem 5%; }
         }
 
-    .logo {
-        font-size: 1.5rem;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 12px; /* Logo görseli ile yazı arasındaki boşluk */
-    }
-
-    .logo img {
-        max-height: 45px; /* Navbar yüksekliğine göre logonun maksimum boyutu */
-        width: auto;
-    }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            
+            .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                width: 100%; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                background: var(--primary); 
+                padding: 15px 0;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .nav-links.active { display: flex; }
+            .nav-links a { width: 100%; text-align: center; padding: 12px 0; }
+            
+            .hero { padding: 4rem 5% 3rem; }
+            .hero h1 { font-size: 1.9rem; }
+            .hero p { font-size: 1rem; }
+            
+            .btn { width: 100%; } /* Butonlar mobilde tam genişlik kaplar */
+            .btn-group { flex-direction: column; gap: 12px; }
+            
+            .section-title { font-size: 1.6rem; margin-bottom: 2rem; }
+            section { padding: 2.5rem 5%; }
+            
+            .card { padding: 20px; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-    <div class="logo">
-    <img src="logo.png" alt="AkSoft Logo" style="height: 40px; width: auto; object-fit: contain; vertical-align: middle;">
-    <span>AkSoft Stok Yönetim Sistemi</span>
-</div>
-        <div class="nav-links">
+        <div class="logo">
+            <img src="logo.png" alt="AkSoft Logo">
+            <span>AkSoft Stok</span>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="nav-menu">
             <a href="#ozellikler">Özellikler</a>
             <a href="#kurulum">Kurulum</a>
             <a href="#ekranlar">Ekranlar</a>
@@ -134,7 +268,7 @@
             <span class="badge"><i class="fas fa-certificate"></i> Ticari Lisans</span>
         </div>
 
-        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <div class="btn-group">
             <a href="#kurulum" class="btn btn-primary"><i class="fas fa-download"></i> Hemen İndir</a>
             <a href="https://wa.me/905412664569?text=Merhabalar%20A%C4%9Fahan%20Bey.%20AkSoft%20program%C4%B1%20ile%20ilgili%20bilgi%20almak%20istiyorum." target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Destek</a>
         </div>
@@ -175,7 +309,7 @@
         </div>
     </section>
 
-    <section id="kurulum" style="background: white; border-radius: 12px; padding: 4rem;">
+    <section id="kurulum" style="background: white; border-radius: 12px;">
         <h2 class="section-title">Kurulum ve Gereksinimler</h2>
         <div class="grid-2">
             <div>
@@ -208,7 +342,7 @@
             <div>
                 <h3><i class="fas fa-rocket"></i> Başlangıç Adımları</h3>
                 <ol style="margin-left: 20px; line-height: 1.8;">
-                    <li>yandaki yazıdan <a href="https://github.com/agahankayhan/AK-SOFT-POS-STOK-SYSTEM/releases/tag/v20" target="_blank">👉🏽<b>AKSOFT_STOK_v20.exe</b>👈🏽 dosyasını indirin.</li>
+                    <li>GitHub üzerinden <a href="https://github.com/agahankayhan/AK-SOFT-POS-STOK-SYSTEM/releases/tag/v20" target="_blank" style="color:var(--accent); font-weight:bold;">👉🏽AKSOFT_STOK_v20.exe👈🏽</a> dosyasını indirin.</li>
                     <li>İndirilen dosyaya çift tıklayın.</li>
                     <li>Windows Defender uyarısı çıkarsa <i>"Daha fazla bilgi" -> "Yine de çalıştır"</i> seçin.</li>
                     <li>Aşağıdaki varsayılan bilgilerle giriş yapın:</li>
@@ -217,7 +351,7 @@
                     Kullanıcı Adı : admin<br>
                     Şifre         : admin123
                 </div>
-                <p style="font-size: 0.9rem; color: #e74c3c;"><i class="fas fa-exclamation-triangle"></i> Güvenliğiniz için ilk girişten sonra şifrenizi Ayarlar bölümünden değiştiriniz.</p>
+                <p style="font-size: 0.9rem; color: #e74c3c; margin-top: 10px;"><i class="fas fa-exclamation-triangle"></i> Güvenliğiniz için ilk girişten sonra şifrenizi Ayarlar bölümünden değiştiriniz.</p>
             </div>
         </div>
     </section>
@@ -264,7 +398,7 @@
         </div>
     </section>
 
-    <section id="roller" style="background: white; border-radius: 12px; padding: 4rem;">
+    <section id="roller" style="background: white; border-radius: 12px;">
         <h2 class="section-title">Kullanıcı Rolleri ve Yetki Sistemi</h2>
         <div class="table-responsive">
             <table>
@@ -321,7 +455,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">Lisans anahtarını nasıl alabilirim? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">Programı açtıktan sonra gri küçük kutuya tıklayarak  "Makine Bilgisi"ni kopyalayıp WhatsApp üzerinden Ağahan Bey'e ileterek lisansınızı anında temin edebilirsiniz.</div>
+                <div class="faq-answer">Programı açtıktan sonra gri küçük kutuya tıklayarak "Makine Bilgisi"ni kopyalayıp WhatsApp üzerinden ileterek lisansınızı anında temin edebilirsiniz.</div>
             </div>
         </div>
     </section>
@@ -332,22 +466,43 @@
         <div style="margin: 20px 0;">
             <a href="https://wa.me/905412664569" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> +90 541 266 45 69</a>
         </div>
-        <p style="font-size: 0.9rem; margin-top: 20px;">&copy; 2026 AkSoft Yazılım - Geliştirici: Ağahan Kayhan.| AK COMPANY - Tüm hakları saklıdır. (Sürüm v20)</p>
+        <p style="font-size: 0.9rem; margin-top: 20px;">&copy; 2026 AkSoft Yazılım - Geliştirici: Ağahan Kayhan | AK COMPANY - Tüm hakları saklıdır. (Sürüm v20)</p>
     </footer>
 
     <script>
+        // Mobil Hamburger Menü Açılış Kapanış Kontrolü
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            // İkon değiştirme (Bar / Kapat butonu)
+            const icon = mobileMenu.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        });
+
+        // Menü linklerine tıklandığında menüyü otomatik kapat
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenu.querySelector('i').className = 'fas fa-bars';
+            });
+        });
+
         // SSS Akordiyon Mantığı
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const parent = question.parentElement;
                 const isActive = parent.classList.contains('active');
                 
-                // Diğer açık olanları kapat
                 document.querySelectorAll('.faq-item').forEach(item => {
                     item.classList.remove('active');
                 });
 
-                // Tıklananı aç (eğer zaten açık değilse)
                 if (!isActive) {
                     parent.classList.add('active');
                 }
