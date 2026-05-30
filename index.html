@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AkSoft Stok Yönetim Sistemi</title>
+    <meta name="description" content="Küçük ve orta ölçekli işletmeler için geliştirilmiş, kullanımı kolay, hızlı ve güçlü stok & satış yönetim programı.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Temel Değişkenler */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #27ae60;
+            --accent-hover: #219653;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --border: #e9ecef;
+        }
+
+        /* Genel Ayarlar */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--dark); background-color: var(--light); scroll-behavior: smooth; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* Navbar */
+        nav { background: var(--primary); color: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .logo { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: white; font-weight: 600; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        
+        /* Hero Section */
+        .hero { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; text-align: center; padding: 6rem 5% 4rem; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .badges { margin-bottom: 2rem; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .badge { background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; backdrop-filter: blur(5px); }
+        
+        /* Butonlar */
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 8px; font-weight: 600; transition: all 0.3s; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+        .btn-whatsapp { background: #25D366; color: white; }
+        .btn-whatsapp:hover { background: #1ebe57; transform: translateY(-2px); }
+
+        /* Seksiyonlar */
+        section { padding: 5rem 5%; max-width: 1200px; margin: auto; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 3rem; color: var(--primary); }
+
+        /* Grid Sistemleri */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
+
+        /* Kartlar */
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; border: 1px solid var(--border); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
+        .card h3 { font-size: 1.3rem; margin-bottom: 15px; color: var(--primary); }
+        .card ul { margin-top: 15px; }
+        .card ul li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+        .card ul li::before { content: '\f00c'; font-family: 'FontAwesome'; position: absolute; left: 0; color: var(--accent); }
+
+        /* Tablolar */
+        .table-responsive { overflow-x: auto; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: var(--primary); color: white; font-weight: 600; }
+        tr:hover { background-color: var(--light); }
+
+        /* Kod Blokları */
+        .code-block { background: var(--dark); color: #00ff00; padding: 15px; border-radius: 8px; font-family: monospace; margin: 15px 0; }
+
+        /* SSS Akordiyon */
+        .faq-item { background: white; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--border); overflow: hidden; }
+        .faq-question { padding: 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: white; }
+        .faq-question:hover { color: var(--accent); }
+        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; }
+        .faq-item.active .faq-answer { padding: 0 20px 20px; max-height: 300px; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); transition: 0.3s; }
+
+        /* Footer */
+        footer { background: var(--dark); color: white; text-align: center; padding: 3rem 5%; margin-top: 3rem; }
+        footer p { opacity: 0.7; margin-bottom: 10px; }
+
+        /* Mobil Uyum */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            section { padding: 3rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <i class="fas fa-store"></i> AkSoft Stok
+        </div>
+        <div class="nav-links">
+            <a href="#ozellikler">Özellikler</a>
+            <a href="#kurulum">Kurulum</a>
+            <a href="#ekranlar">Ekranlar</a>
+            <a href="#roller">Yetkiler</a>
+            <a href="#sss">S.S.S</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>AkSoft Stok Yönetim Sistemi</h1>
+        <p>Küçük ve orta ölçekli işletmeler için geliştirilmiş, kullanımı kolay, hızlı ve güçlü stok & satış yönetim programı.</p>
+        
+        <div class="badges">
+            <span class="badge"><i class="fas fa-code-branch"></i> v20 Güncel</span>
+            <span class="badge"><i class="fab fa-windows"></i> Win 10/11</span>
+            <span class="badge"><i class="fas fa-certificate"></i> Ticari Lisans</span>
+        </div>
+
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <a href="#kurulum" class="btn btn-primary"><i class="fas fa-download"></i> Hemen İndir</a>
+            <a href="https://wa.me/905412664569?text=Merhabalar%20A%C4%9Fahan%20Bey.%20AkSoft%20program%C4%B1%20ile%20ilgili%20bilgi%20almak%20istiyorum." target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Destek</a>
+        </div>
+    </div>
+
+    <section id="ozellikler">
+        <h2 class="section-title">Neden AkSoft Stok?</h2>
+        <div class="grid-3">
+            <div class="card">
+                <i class="fas fa-bolt"></i>
+                <h3>Hızlı ve Kolay</h3>
+                <p>Muhasebe yazılımlarının karmaşıklığına gerek duymadan, dükkanınızı dakikalar içinde yönetmeye başlayın.</p>
+                <ul>
+                    <li>Kurulum gerektirmez (.exe)</li>
+                    <li>İnternet bağlantısı gerekmez</li>
+                </ul>
+            </div>
+            <div class="card">
+                <i class="fas fa-print"></i>
+                <h3>Gelişmiş Donanım Desteği</h3>
+                <p>Sisteminizdeki mevcut donanımlarla tam uyumlu çalışır.</p>
+                <ul>
+                    <li>Termal fiş yazıcı desteği</li>
+                    <li>30x50 mm barkod etiket yazıcı</li>
+                    <li>Barkod okuyucu entegrasyonu</li>
+                </ul>
+            </div>
+            <div class="card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Detaylı Raporlama</h3>
+                <p>İşletmenizin durumunu anlık olarak takip edin.</p>
+                <ul>
+                    <li>Gün sonu Z Raporu</li>
+                    <li>Ödeme yöntemine göre döküm</li>
+                    <li>Satış analitiği ve iptal takibi</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="kurulum" style="background: white; border-radius: 12px; padding: 4rem;">
+        <h2 class="section-title">Kurulum ve Gereksinimler</h2>
+        <div class="grid-2">
+            <div>
+                <h3><i class="fas fa-desktop"></i> Sistem Gereksinimleri</h3>
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <th>Özellik</th>
+                            <th>Minimum</th>
+                            <th>Önerilen</th>
+                        </tr>
+                        <tr>
+                            <td>İşletim Sistemi</td>
+                            <td>Windows 10 (64-bit)</td>
+                            <td>Windows 11</td>
+                        </tr>
+                        <tr>
+                            <td>RAM</td>
+                            <td>2 GB</td>
+                            <td>4 GB</td>
+                        </tr>
+                        <tr>
+                            <td>Disk Alanı</td>
+                            <td>100 MB</td>
+                            <td>500 MB</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <h3><i class="fas fa-rocket"></i> Başlangıç Adımları</h3>
+                <ol style="margin-left: 20px; line-height: 1.8;">
+                    <li>Yukarıdaki linkten <b>AKSOFT_STOK_v20.exe</b> dosyasını indirin.</li>
+                    <li>İndirilen dosyaya çift tıklayın.</li>
+                    <li>Windows Defender uyarısı çıkarsa <i>"Daha fazla bilgi" -> "Yine de çalıştır"</i> seçin.</li>
+                    <li>Aşağıdaki varsayılan bilgilerle giriş yapın:</li>
+                </ol>
+                <div class="code-block">
+                    Kullanıcı Adı : admin<br>
+                    Şifre         : admin123
+                </div>
+                <p style="font-size: 0.9rem; color: #e74c3c;"><i class="fas fa-exclamation-triangle"></i> Güvenliğiniz için ilk girişten sonra şifrenizi Ayarlar bölümünden değiştiriniz.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ekranlar">
+        <h2 class="section-title">Modüller ve Ekranlar</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>📊 Kontrol Paneli (Dashboard)</h3>
+                <p>Ana ekranda güncel işletme verileriniz tek bakışta.</p>
+                <ul>
+                    <li>Bugünkü Ciro ve Toplam Satış Adedi</li>
+                    <li>Sistemdeki Toplam Ürün ve Stok</li>
+                    <li>Tek tıkla Z Raporu yazdırma</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>📦 Stok Yönetimi</h3>
+                <p>Tüm envanterinizi bu ekrandan yönetin.</p>
+                <ul>
+                    <li>Barkod, ad, fiyat ve kategori ile ürün ekleme</li>
+                    <li>30x50 mm barkod etiketi yazdırma</li>
+                    <li>Kritik stok uyarısı (Eşik altı ürünler vurgulanır)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>💰 Satış (POS) Hızlı Ekranı</h3>
+                <p>Barkod okutun, sepete ekleyin, ödemeyi alın.</p>
+                <ul>
+                    <li>Nakit / Kredi Kartı / Veresiye / Çek ödeme tipleri</li>
+                    <li>Kalem bazında veya toplu indirim</li>
+                    <li>Satış bitiminde otomatik fiş yazdırma</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>⚙️ Kapsamlı Ayarlar</h3>
+                <p>Programı işletmenize göre özelleştirin.</p>
+                <ul>
+                    <li>Fiş başlık, alt metin ve firma bilgileri düzenleme</li>
+                    <li>Tema (Sidebar/Buton) renk özelleştirmesi</li>
+                    <li>POS cihazı bağlantı port ayarları</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="roller" style="background: white; border-radius: 12px; padding: 4rem;">
+        <h2 class="section-title">Kullanıcı Rolleri ve Yetki Sistemi</h2>
+        <div class="table-responsive">
+            <table>
+                <tr>
+                    <th>Rol</th>
+                    <th style="text-align: center;">Satış</th>
+                    <th style="text-align: center;">Stok</th>
+                    <th style="text-align: center;">Raporlar</th>
+                    <th style="text-align: center;">Ayarlar</th>
+                    <th style="text-align: center;">İptal</th>
+                </tr>
+                <tr>
+                    <td><b>Yönetici (Admin)</b></td>
+                    <td style="text-align: center; color: var(--accent);"><i class="fas fa-check-circle"></i></td>
+                    <td style="text-align: center; color: var(--accent);"><i class="fas fa-check-circle"></i></td>
+                    <td style="text-align: center; color: var(--accent);"><i class="fas fa-check-circle"></i></td>
+                    <td style="text-align: center; color: var(--accent);"><i class="fas fa-check-circle"></i></td>
+                    <td style="text-align: center; color: var(--accent);"><i class="fas fa-check-circle"></i></td>
+                </tr>
+                <tr>
+                    <td><b>Kasiyer</b></td>
+                    <td style="text-align: center; color: var(--accent);"><i class="fas fa-check-circle"></i></td>
+                    <td style="text-align: center; color: #e74c3c;"><i class="fas fa-times-circle"></i></td>
+                    <td style="text-align: center; color: #e74c3c;"><i class="fas fa-times-circle"></i></td>
+                    <td style="text-align: center; color: #e74c3c;"><i class="fas fa-times-circle"></i></td>
+                    <td style="text-align: center; color: #e74c3c;"><i class="fas fa-times-circle"></i></td>
+                </tr>
+                <tr>
+                    <td><b>Stok Sorumlusu</b></td>
+                    <td style="text-align: center; color: #e74c3c;"><i class="fas fa-times-circle"></i></td>
+                    <td style="text-align: center; color: var(--accent);"><i class="fas fa-check-circle"></i></td>
+                    <td style="text-align: center; color: var(--accent);"><i class="fas fa-check-circle"></i></td>
+                    <td style="text-align: center; color: #e74c3c;"><i class="fas fa-times-circle"></i></td>
+                    <td style="text-align: center; color: #e74c3c;"><i class="fas fa-times-circle"></i></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section id="sss">
+        <h2 class="section-title">Sık Sorulan Sorular</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">Verilerim nerede saklanıyor? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Tüm veriler programın bulunduğu klasördeki database.db dosyasında yerel olarak saklanır. Program bulut tabanlı değildir, bu sayede internet bağlantısı kopsa dahi kesintisiz çalışmaya devam edebilirsiniz.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Eski programdan verileri aktarabilir miyim? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Evet. Ayarlar → Admin Girişi → Veritabanı sekmesinden eski .db dosyasını seçip verilerinizi güvenle yeni sürüme aktarabilirsiniz.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Birden fazla bilgisayarda kullanabilir miyim? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Program lisansları tek bir donanım (Makine ID) üzerine tanımlanmaktadır. Ağ üzerinden ortak veritabanı kullanımı veya çoklu bilgisayar kurulumları için lütfen iletişim kanallarımızdan bize ulaşın.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Lisans anahtarını nasıl alabilirim? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Programı kurduktan sonra "Ayarlar → Admin Girişi → Lisans" sekmesinden "Makine Bilgisi"ni kopyalayıp WhatsApp üzerinden Agahan Bey'e ileterek lisansınızı anında temin edebilirsiniz.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h3 style="margin-bottom: 15px;">AkSoft Stok Yönetim Sistemi</h3>
+        <p>Yazılım geliştirme, lisans ve destek işlemleri için iletişime geçebilirsiniz.</p>
+        <div style="margin: 20px 0;">
+            <a href="https://wa.me/905412664569" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> +90 541 266 45 69</a>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 20px;">&copy; 2026 AkSoft Yazılım - Geliştirici: Agahan Bey. Tüm hakları saklıdır. (Sürüm v20)</p>
+    </footer>
+
+    <script>
+        // SSS Akordiyon Mantığı
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const parent = question.parentElement;
+                const isActive = parent.classList.contains('active');
+                
+                // Diğer açık olanları kapat
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Tıklananı aç (eğer zaten açık değilse)
+                if (!isActive) {
+                    parent.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
